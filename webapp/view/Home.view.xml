@@ -1,0 +1,80 @@
+<mvc:View controllerName="com.porders.pordersapp.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+			<Table 
+				id="idPordersTable"
+				items="{porderList>/d/results}"
+				growing="true"
+				growingThreshold="25"
+			>
+				<headerToolbar>
+					<OverflowToolbar id="principaleToolbar">
+						<Title id="toolbarTitle" text="{i18n>searchToolbarTitle}"/>
+						<ToolbarSpacer id="toolbarSpacer01"/>
+						<Button id="btnRefresh" text="Refresh" press="onRefresh"/>
+						<Button id="btnDownload" text="Download" press="onDownload"/>
+						<ToolbarSpacer id="toolbarSpacer02"/>
+						<SearchField id="searchField" width="20%" search="onSearch"/>
+						<Button id="btnSort" tooltip="Sort" icon="sap-icon://sort" press="onSort"/>
+						<Button id="btnGroup" tooltip="Group" icon="sap-icon://group-2" press="onGroup"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="colPONumber">
+						<Text id="colTextPONumber" text="{i18n>columnPONumber}" />
+					</Column>
+					<Column id="colPODescription">
+						<Text id="colTextPODescription" text="{i18n>columnPODescription}" />
+					</Column>
+					<Column id="colCompanyCode">
+						<Text id="colTextCompanyCode" text="{i18n>columnCompanyCode}" />
+					</Column>
+					<Column id="colUser">
+						<Text id="colTextUser" text="{i18n>columnUser}" />
+					</Column>
+					<Column id="colVendor">
+						<Text id="colTextVendor" text="{i18n>columnVendor}" />
+					</Column>
+					<Column id="colCreatedAt">
+						<Text id="colTextCreatedAt" text="{i18n>columnCreatedAt}" />
+					</Column>
+					<Column id="colReleaseInd">
+						<Text id="colTextReleaseInd" text="{i18n>columnReleaseInd}" />
+					</Column>
+					<Column id="colNetPrice">
+						<Text id="colTextNetPrice" text="{i18n>columnNetPrice}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="colListItem" type="Navigation" press="onPressItem">
+						<cells>
+							<ObjectIdentifier id="poNumber" title="{porderList>PONumber}"/>
+							<Text id="poDescription" text="{porderList>PODescription}"/>
+							<Text id="companyCode" text="{porderList>CompanyCode}"/>
+							<Text id="userName" text="{porderList>UserDetail/UserName}"/>
+							<Text id="vendor" text="{porderList>Vendor}"/>
+                            <!-- <ObjectAttribute id="createdAt" text="{path: 'porderList>CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}"/> -->
+							<ObjectAttribute 	id="createdAt" 
+												text="{
+													path: 'porderList>CreatedAt',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium',
+														source: {
+															pattern: 'yyyy-MM-dd'
+														}
+													}
+												}"
+							/>
+							<ObjectStatus id="relIndDescription" text= "{porderList>RelIndDescription}" icon="sap-icon://status-completed" state="{path: 'porderList>ReleaseIndicator', formatter: '.formatter.formatStatus'}" />
+							<ObjectNumber id="netPrice" number="{ parts: [{path: 'porderList>NetPrice'}, {path: 'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }" 
+							unit="{porderList>CurrencyCode}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,7 @@
+<mvc:View controllerName="com.porders.pordersapp.controller.NotFound" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <IllustratedMessage id="pageMessage" enableVerticalResponsiveness="true" illustrationType="sap.m.IllustratedMessageType.SimpleError">
+        <additionalContent>
+            <Button id="btnBack" text="Volver" press="onNavBack"/>
+        </additionalContent>
+    </IllustratedMessage>
+</mvc:View>
