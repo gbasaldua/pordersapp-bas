@@ -2,6 +2,30 @@
   "xsappname": "comporderspordersapp",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
-  "scopes": [],
-  "role-templates": []
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "UAA Display"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    },
+    {
+      "name": "PO_EMP_Role",
+      "description": "UAA PO_EMP_Role",
+      "scope-references": [
+        "$XSAPPNAME.Display"
+      ]
+    }
+  ]
 }

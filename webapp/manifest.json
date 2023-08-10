@@ -25,6 +25,22 @@
                     "odataVersion": "2.0"
                 }
             }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Object",
+                    "action": "display",
+                    "title": "{{appTitle}}",
+                    "info": "{{appTitle}}",
+                    "subTitle": "{{appSubTitle}}",
+                    "icon": "sap-icon://account"
+                }
+            }
         }
     },
     "sap.ui": {
@@ -137,5 +153,8 @@
     "sap.cloud": {
         "public": true,
         "service": "comporderspordersapp"
+    },
+    "sap.platform.cf": {
+        "oAuthScopes": ["$XSAPPNAME.Display"]
     }
 }

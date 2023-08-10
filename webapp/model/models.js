@@ -72,6 +72,21 @@ sap.ui.define([
 
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
+            },
+
+            createAuthModel:function (serviceUrl) {
+                var oModel = new sap.ui.model.json.JSONModel();
+                const oBusy = new sap.m.BusyDialog();
+
+                oBusy.open();
+
+                oModel.loadData(serviceUrl);
+                oModel.attachRequestCompleted(function onCompleted(oEvent) {
+                    oBusy.close();
+                });
+                oModel.setDefaultBindingMode("OneWay");
+                console.log(oModel);
+                return oModel;
             }
         };
     });
