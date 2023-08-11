@@ -34,13 +34,6 @@
         "DELETE": ["$XSAPPNAME.Display"],
         "default": ["$XSAPPNAME.Display"]
       }
-    },
-    {
-      "source": "^/sap/rest/(.*)$",
-      "target": "$1",
-      "destination": "SAP_Apiaccess",
-      "authenticationType": "none",
-      "csrfProtection": false
     }
   ]
 }

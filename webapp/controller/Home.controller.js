@@ -29,14 +29,7 @@ sap.ui.define([
 				const userEmail = sap.ushell.Container.getUser().getEmail();
 				const uriPOrdersSet = this.getOwnerComponent().getModel().sServiceUrl + '/HeaderSet';
 				const uriBtpUserSet = this.getOwnerComponent().getModel().sServiceUrl + '/BtpUserSet';
-				//const uriRoleCollection = 'https://api.authentication.us10.hana.ondemand.com/sap/rest/authorization/v2/rolecollections?showUsers=false&showRoles=true&showGroups=false';
-				//const uriRoleCollection = '/sap/rest/authorization/v2/rolecollections?showUsers=true';
-				//const uriRoleCollection = this.getOwnerComponent().getModel("apiAuthModel").sServiceUrl + '/rolecollections?showUsers=true';
 				const oModelPOrders = Model.createPOrdersModel(uriPOrdersSet, uriBtpUserSet, userEmail);
-				//const oModelAuth = Model.createAuthModel(uriRoleCollection);
-
-				//console.log(uriBtpUserSet);
-				//console.log(uriRoleCollection);
 
 				//   Se actualiza el modelo de pedidos
 				this.getView().setModel(oModelPOrders, 'porderList');
